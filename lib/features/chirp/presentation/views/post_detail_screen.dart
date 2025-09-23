@@ -1,3 +1,4 @@
+import 'package:academia/config/router/routes.dart';
 import 'package:academia/core/clippers/clippers.dart';
 import 'package:academia/features/chirp/presentation/bloc/feed/feed_bloc.dart';
 import 'package:academia/features/chirp/presentation/widgets/comment_widget.dart';
@@ -7,9 +8,7 @@ import 'package:academia/features/chirp/domain/entities/post.dart';
 import 'package:academia/features/chirp/domain/entities/post_replies.dart';
 import 'package:academia/features/chirp/presentation/widgets/post_card_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 class PostDetailPage extends StatefulWidget {
   final Post post;
@@ -264,6 +263,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
                     behavior: SnackBarBehavior.floating,
                   ),
                 );
+                CommunitiesRoute(communityId: post.group.id).push(context);
               },
               icon: Icon(Icons.groups, color: Colors.white),
             ),

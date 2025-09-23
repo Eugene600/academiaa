@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:academia/features/communities/presentation/views/community_about.dart';
 import 'package:academia/features/communities/presentation/views/community_members.dart';
+import 'package:go_router/go_router.dart';
 
 class CommunityHome extends StatefulWidget {
   final String communityId;
@@ -71,6 +72,13 @@ class _CommunityHomeState extends State<CommunityHome>
           );
         } else if (state is CommunityHomeFailure) {
           return Scaffold(
+            appBar: AppBar(
+              title: const Text("Community Page"),
+              leading: IconButton(
+                onPressed: () => context.pop(),
+                icon: Icon(Icons.arrow_back),
+              ),
+            ),
             body: Center(
               child: Text(
                 state.message,
@@ -241,7 +249,6 @@ class _CommunityHomeState extends State<CommunityHome>
                     ],
 
                     flexibleSpace: FlexibleSpaceBar(
-                    
                       background: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
